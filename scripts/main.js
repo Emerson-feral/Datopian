@@ -5,7 +5,7 @@ const fs = require('fs')
 const results =[]
 let sortedData =[]
 
-fs.createReadStream('EuropeRoadData.csv')
+fs.createReadStream('../data/EuropeRoadData.csv')
     .pipe(csv({}))
     .on('data',(data) =>{ 
         results.push({
@@ -19,7 +19,7 @@ fs.createReadStream('EuropeRoadData.csv')
         sortedData = results.sort((a, b) => (a.deathPerMillion < b.deathPerMillion)? 1 : -1)
 
         const csWriter = createCsWriter({
-            path: 'newEuropeRoadData.csv',
+            path: '../data/newEuropeRoadData.csv',
             header:[
                 {id:'Country',title:'Country'},
                 {id:'Year',title:'Year'},
